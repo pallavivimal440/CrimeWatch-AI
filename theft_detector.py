@@ -16,11 +16,14 @@ class TheftDetector:
         self.first_seen = {}
         self.alerted = set()
 
+        # Keep alert visible
+        self.current_alert = None
+        self.alert_time = 0
+        self.alert_duration = 8  # seconds
+
     def update(self, detections, frame):
 
         current_time = time.time()
-
-        alerts = []
 
         person_present = False
 
@@ -48,6 +51,9 @@ class TheftDetector:
 
                     self.alerted.remove(name)
 
+                    if self.current_alert == name:
+                        self.current_alert = None
+
         # -------------------------
         # Missing Check
         # -------------------------
@@ -73,12 +79,26 @@ class TheftDetector:
                 and person_present
             ):
 
-                print(f"\n⚠️ THEFT DETECTED : {name}")
+                print("\n" + "=" * 45)
+                print("🚨 THEFT DETECTED")
+                print(f"Missing Object : {name.upper()}")
+                print("Evidence Saved")
+                print("=" * 45)
 
                 save_theft(frame, name)
 
                 self.alerted.add(name)
 
-                alerts.append(name)
+                self.current_alert = name
+                self.alert_time = current_time
 
-        return alerts
+        # -------------------------
+        # Keep alert on screen
+        # -------------------------
+        if (
+            self.current_alert is not None
+            and current_time - self.alert_time <= self.alert_duration
+        ):
+            return [self.current_alert]
+
+        return []

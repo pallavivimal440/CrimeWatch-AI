@@ -29,20 +29,22 @@ def draw_box(frame, box, color=(0, 255, 0)):
 
 def draw_alert(frame, title, obj):
 
-    # Background
+    h, w = frame.shape[:2]
+
+    # Red Banner
     cv2.rectangle(
         frame,
-        (10, 10),
-        (500, 120),
+        (0, 0),
+        (w, 100),
         (0, 0, 255),
         -1
     )
 
-    # Border
+    # White Border
     cv2.rectangle(
         frame,
-        (10, 10),
-        (500, 120),
+        (0, 0),
+        (w, 100),
         (255, 255, 255),
         2
     )
@@ -51,9 +53,9 @@ def draw_alert(frame, title, obj):
     cv2.putText(
         frame,
         "CRIMEWATCH AI ALERT",
-        (25, 40),
+        (20, 35),
         cv2.FONT_HERSHEY_SIMPLEX,
-        0.8,
+        0.9,
         (255, 255, 255),
         2
     )
@@ -62,7 +64,7 @@ def draw_alert(frame, title, obj):
     cv2.putText(
         frame,
         title,
-        (25, 75),
+        (20, 65),
         cv2.FONT_HERSHEY_SIMPLEX,
         0.75,
         (0, 255, 255),
@@ -72,10 +74,10 @@ def draw_alert(frame, title, obj):
     # Object Name
     cv2.putText(
         frame,
-        obj.upper(),
-        (25, 105),
+        f"Object : {obj.upper()}",
+        (20, 90),
         cv2.FONT_HERSHEY_SIMPLEX,
-        0.8,
+        0.7,
         (255, 255, 255),
         2
     )

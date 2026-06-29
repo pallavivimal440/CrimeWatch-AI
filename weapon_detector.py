@@ -10,54 +10,67 @@ class WeaponDetector:
 
         self.saved = set()
 
-        self.first_seen = {}
+        self.current_alert = None
+        self.alert_time = 0
+        self.alert_duration = 8
 
     def update(self, detections, frame):
 
-        alerts = []
-
-        current_detected = set()
-
         current_time = time.time()
+
         person_present = False
 
+        weapon_found = None
+
+        # -------------------------
+        # Check detections
+        # -------------------------
         for obj in detections:
 
             name = obj["name"]
+
             if name == "person":
                 person_present = True
 
             if name in WEAPON_OBJECTS:
+                weapon_found = name
 
-                current_detected.add(name)
+        # -------------------------
+        # Weapon Alert
+        # -------------------------
+        if (
+            person_present
+            and weapon_found is not None
+            and weapon_found not in self.saved
+        ):
 
-                if name not in self.first_seen:
-                    self.first_seen[name] = current_time
+            print("\n====================================")
+            print("🚨 WEAPON DETECTED")
+            print(f"Weapon : {weapon_found.upper()}")
+            print("Saving Evidence...")
+            print("====================================")
 
-                visible_time = (
-                    current_time
-                    - self.first_seen[name]
-                )
+            save_weapon(frame, weapon_found)
 
-                if (
-                    visible_time >= 2
-                    and person_present
-                    and name not in self.saved
-                ):
+            self.saved.add(weapon_found)
 
-                    print(f"\n🚨 WEAPON DETECTED : {name}")
+            self.current_alert = weapon_found
+            self.alert_time = current_time
 
-                    save_weapon(frame, name)
-
-                    self.saved.add(name)
-
-                    alerts.append(name)
-
+        # -------------------------
         # Reset when weapon disappears
-        for name in list(self.first_seen.keys()):
-            if name not in current_detected:
-                self.first_seen.pop(name)
+        # -------------------------
+        if weapon_found is None:
 
-        self.saved = self.saved.intersection(current_detected)
+            self.saved.clear()
 
-        return alerts
+        # -------------------------
+        # Keep alert for 8 sec
+        # -------------------------
+        if (
+            self.current_alert is not None
+            and current_time - self.alert_time <= self.alert_duration
+        ):
+            return [self.current_alert]
+
+        return []
