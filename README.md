@@ -95,6 +95,12 @@ Automatically saved evidence after theft detection.
 Automatically saved evidence after dangerous object detection.
 
 ![Weapon Evidence](images/weapon_evidence.png)
+
+### 📝 Crime Log
+
+Every detected event is recorded with timestamps for future investigation.
+
+![Crime Log](images/crime_log.png)
 ## 🎯 Vision
 
 Think of CrimeWatch AI as a **digital security guard**.
