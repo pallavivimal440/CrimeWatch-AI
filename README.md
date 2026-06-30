@@ -83,6 +83,12 @@ The system detects dangerous objects such as knives, scissors, and baseball bats
 
 ![Weapon Detection](images/weapon_alert.jpeg)
 
+### 📁 Theft Evidence
+
+Automatically saved evidence after theft detection.
+
+![Theft Evidence](images/theft_evidence.jpeg)
+
 ## 🎯 Vision
 
 Think of CrimeWatch AI as a **digital security guard**.
