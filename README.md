@@ -69,7 +69,7 @@ CrimeWatch AI monitors live camera footage, detects suspicious events, automatic
 
 The system detects objects in real time using YOLOv8 and displays labels with confidence scores.
 
-![Object Detection](images/object_detection.png)
+![Object Detection](images/object detection.png)
 
 ## 🎯 Vision
 
