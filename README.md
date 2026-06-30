@@ -71,6 +71,12 @@ The system detects objects in real time using YOLOv8 and displays labels with co
 
 ![Object Detection](images/object%20detection.png)
 
+### 🚨 Theft Detection
+
+When a monitored object disappears after being visible, CrimeWatch AI generates a theft alert and automatically captures evidence.
+
+![Theft Alert](images/theft_alert.png)
+
 ## 🎯 Vision
 
 Think of CrimeWatch AI as a **digital security guard**.
