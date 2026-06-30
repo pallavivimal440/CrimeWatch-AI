@@ -101,6 +101,12 @@ Automatically saved evidence after dangerous object detection.
 Every detected event is recorded with timestamps for future investigation.
 
 ![Crime Log](images/crime_log.png)
+
+### 📂 Project Structure
+
+Current folder structure of the CrimeWatch AI project.
+
+![Project Structure](images/project_structure.png)
 ## 🎯 Vision
 
 Think of CrimeWatch AI as a **digital security guard**.
