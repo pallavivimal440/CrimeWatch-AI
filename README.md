@@ -77,6 +77,12 @@ When a monitored object disappears after being visible, CrimeWatch AI generates 
 
 ![Theft Alert](images/theft_alert.png)
 
+### 🔪 Dangerous Object Detection
+
+The system detects dangerous objects such as knives, scissors, and baseball bats, then generates an instant warning alert.
+
+![Weapon Detection](images/weapon_alert.jpeg)
+
 ## 🎯 Vision
 
 Think of CrimeWatch AI as a **digital security guard**.
