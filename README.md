@@ -107,6 +107,14 @@ Every detected event is recorded with timestamps for future investigation.
 Current folder structure of the CrimeWatch AI project.
 
 ![Project Structure](images/project_structure.png)
+
+## 🎬 Project Demo
+
+Here is a quick look at **CrimeWatch-AI** in action:
+
+![Project Demo](images/demo.gif)
+
+
 ## 🎯 Vision
 
 Think of CrimeWatch AI as a **digital security guard**.
